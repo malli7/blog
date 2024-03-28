@@ -44,7 +44,20 @@ const Blog = () => {
   }
   return (
     <div>
-      <FullBlog blog={blog} />
+      <FullBlog
+        blog={
+          blog
+            ? blog
+            : {
+                content: "this is random content",
+                title: "random post",
+                id: "random-id",
+                author: {
+                  name: "randon-user",
+                },
+              }
+        }
+      />
     </div>
   );
 };
