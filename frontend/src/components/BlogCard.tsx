@@ -18,7 +18,7 @@ const BlogCard = ({
     <Link to={`/blog/${id}`}>
       <div className="border-b border-slate-200 p-4 w-screen max-w-screen-lg">
         <div className="flex items-center">
-          <Avatar name={authorName} size={6} />
+          <Avatar name={authorName} size="small" />
           <div className="mx-1 font-extralight text-slate-600">
             {authorName}
           </div>
@@ -42,10 +42,12 @@ const BlogCard = ({
 
 export default BlogCard;
 
-export function Avatar({ name, size }: { name: string; size: number }) {
+export function Avatar({ name, size }: { name: string; size: string }) {
   return (
     <div
-      className={`relative inline-flex items-center justify-center w-${size} h-${size} overflow-hidden bg-gray-600 rounded-full`}
+      className={`relative inline-flex items-center justify-center ${
+        size == "small" ? "w-6 h-6" : "w-10 h-10"
+      } overflow-hidden bg-gray-600 rounded-full`}
     >
       <span className="font-thin text-gray-300">{name[0]}</span>
     </div>
