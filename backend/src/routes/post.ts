@@ -99,6 +99,16 @@ postRouter.get("/get/:id", async (c) => {
     where: {
       id: id,
     },
+    select: {
+      content: true,
+      title: true,
+      id: true,
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 
   return c.json({ res });
@@ -109,6 +119,17 @@ postRouter.get("/bulk", async (c) => {
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
 
-  const res = await prisma.post.findMany();
+  const res = await prisma.post.findMany({
+    select: {
+      content: true,
+      title: true,
+      id: true,
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
   return c.json({ res });
 });
