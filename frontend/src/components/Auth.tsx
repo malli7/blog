@@ -28,9 +28,9 @@ const Auth = ({ type }: { type: "signin" | "signup" }) => {
       const token = data.token;
       if (token) {
         localStorage.setItem("token", token);
-        navigate("/blogs");
+        navigate("/");
       } else {
-        alert(data.msg);
+        console.log(data.msg);
       }
     } catch (error) {
       alert("some error occurred");
